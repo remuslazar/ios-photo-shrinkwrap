@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		D8C273B11BE7D96E00AA76BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C273B01BE7D96E00AA76BB /* AppDelegate.swift */; };
-		D8C273B31BE7D96E00AA76BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C273B21BE7D96E00AA76BB /* ViewController.swift */; };
 		D8C273B61BE7D96E00AA76BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8C273B41BE7D96E00AA76BB /* Main.storyboard */; };
 		D8C273B81BE7D96F00AA76BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8C273B71BE7D96F00AA76BB /* Assets.xcassets */; };
 		D8C273BB1BE7D96F00AA76BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8C273B91BE7D96F00AA76BB /* LaunchScreen.storyboard */; };
 		D8C273C61BE7D96F00AA76BB /* Photo_ShrinkwrapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C273C51BE7D96F00AA76BB /* Photo_ShrinkwrapTests.swift */; };
 		D8C273D11BE7D96F00AA76BB /* Photo_ShrinkwrapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C273D01BE7D96F00AA76BB /* Photo_ShrinkwrapUITests.swift */; };
+		D8C273DF1BE7DBBA00AA76BB /* PhotosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C273DE1BE7DBBA00AA76BB /* PhotosTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +36,6 @@
 /* Begin PBXFileReference section */
 		D8C273AD1BE7D96E00AA76BB /* Photo Shrinkwrap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Photo Shrinkwrap.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8C273B01BE7D96E00AA76BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D8C273B21BE7D96E00AA76BB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D8C273B51BE7D96E00AA76BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D8C273B71BE7D96F00AA76BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8C273BA1BE7D96F00AA76BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +46,7 @@
 		D8C273CC1BE7D96F00AA76BB /* Photo ShrinkwrapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Photo ShrinkwrapUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8C273D01BE7D96F00AA76BB /* Photo_ShrinkwrapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo_ShrinkwrapUITests.swift; sourceTree = "<group>"; };
 		D8C273D21BE7D96F00AA76BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8C273DE1BE7DBBA00AA76BB /* PhotosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +97,8 @@
 		D8C273AF1BE7D96E00AA76BB /* Photo Shrinkwrap */ = {
 			isa = PBXGroup;
 			children = (
+				D8C273DE1BE7DBBA00AA76BB /* PhotosTableViewController.swift */,
 				D8C273B01BE7D96E00AA76BB /* AppDelegate.swift */,
-				D8C273B21BE7D96E00AA76BB /* ViewController.swift */,
 				D8C273B41BE7D96E00AA76BB /* Main.storyboard */,
 				D8C273B71BE7D96F00AA76BB /* Assets.xcassets */,
 				D8C273B91BE7D96F00AA76BB /* LaunchScreen.storyboard */,
@@ -256,7 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8C273B31BE7D96E00AA76BB /* ViewController.swift in Sources */,
+				D8C273DF1BE7DBBA00AA76BB /* PhotosTableViewController.swift in Sources */,
 				D8C273B11BE7D96E00AA76BB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
