@@ -1,0 +1,507 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D8C273B11BE7D96E00AA76BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C273B01BE7D96E00AA76BB /* AppDelegate.swift */; };
+		D8C273B31BE7D96E00AA76BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C273B21BE7D96E00AA76BB /* ViewController.swift */; };
+		D8C273B61BE7D96E00AA76BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8C273B41BE7D96E00AA76BB /* Main.storyboard */; };
+		D8C273B81BE7D96F00AA76BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8C273B71BE7D96F00AA76BB /* Assets.xcassets */; };
+		D8C273BB1BE7D96F00AA76BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8C273B91BE7D96F00AA76BB /* LaunchScreen.storyboard */; };
+		D8C273C61BE7D96F00AA76BB /* Photo_ShrinkwrapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C273C51BE7D96F00AA76BB /* Photo_ShrinkwrapTests.swift */; };
+		D8C273D11BE7D96F00AA76BB /* Photo_ShrinkwrapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C273D01BE7D96F00AA76BB /* Photo_ShrinkwrapUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D8C273C21BE7D96F00AA76BB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D8C273A51BE7D96E00AA76BB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D8C273AC1BE7D96E00AA76BB;
+			remoteInfo = "Photo Shrinkwrap";
+		};
+		D8C273CD1BE7D96F00AA76BB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D8C273A51BE7D96E00AA76BB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D8C273AC1BE7D96E00AA76BB;
+			remoteInfo = "Photo Shrinkwrap";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D8C273AD1BE7D96E00AA76BB /* Photo Shrinkwrap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Photo Shrinkwrap.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8C273B01BE7D96E00AA76BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D8C273B21BE7D96E00AA76BB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D8C273B51BE7D96E00AA76BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D8C273B71BE7D96F00AA76BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D8C273BA1BE7D96F00AA76BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D8C273BC1BE7D96F00AA76BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8C273C11BE7D96F00AA76BB /* Photo ShrinkwrapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Photo ShrinkwrapTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8C273C51BE7D96F00AA76BB /* Photo_ShrinkwrapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo_ShrinkwrapTests.swift; sourceTree = "<group>"; };
+		D8C273C71BE7D96F00AA76BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8C273CC1BE7D96F00AA76BB /* Photo ShrinkwrapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Photo ShrinkwrapUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8C273D01BE7D96F00AA76BB /* Photo_ShrinkwrapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo_ShrinkwrapUITests.swift; sourceTree = "<group>"; };
+		D8C273D21BE7D96F00AA76BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D8C273AA1BE7D96E00AA76BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8C273BE1BE7D96F00AA76BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8C273C91BE7D96F00AA76BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D8C273A41BE7D96E00AA76BB = {
+			isa = PBXGroup;
+			children = (
+				D8C273AF1BE7D96E00AA76BB /* Photo Shrinkwrap */,
+				D8C273C41BE7D96F00AA76BB /* Photo ShrinkwrapTests */,
+				D8C273CF1BE7D96F00AA76BB /* Photo ShrinkwrapUITests */,
+				D8C273AE1BE7D96E00AA76BB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D8C273AE1BE7D96E00AA76BB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D8C273AD1BE7D96E00AA76BB /* Photo Shrinkwrap.app */,
+				D8C273C11BE7D96F00AA76BB /* Photo ShrinkwrapTests.xctest */,
+				D8C273CC1BE7D96F00AA76BB /* Photo ShrinkwrapUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D8C273AF1BE7D96E00AA76BB /* Photo Shrinkwrap */ = {
+			isa = PBXGroup;
+			children = (
+				D8C273B01BE7D96E00AA76BB /* AppDelegate.swift */,
+				D8C273B21BE7D96E00AA76BB /* ViewController.swift */,
+				D8C273B41BE7D96E00AA76BB /* Main.storyboard */,
+				D8C273B71BE7D96F00AA76BB /* Assets.xcassets */,
+				D8C273B91BE7D96F00AA76BB /* LaunchScreen.storyboard */,
+				D8C273BC1BE7D96F00AA76BB /* Info.plist */,
+			);
+			path = "Photo Shrinkwrap";
+			sourceTree = "<group>";
+		};
+		D8C273C41BE7D96F00AA76BB /* Photo ShrinkwrapTests */ = {
+			isa = PBXGroup;
+			children = (
+				D8C273C51BE7D96F00AA76BB /* Photo_ShrinkwrapTests.swift */,
+				D8C273C71BE7D96F00AA76BB /* Info.plist */,
+			);
+			path = "Photo ShrinkwrapTests";
+			sourceTree = "<group>";
+		};
+		D8C273CF1BE7D96F00AA76BB /* Photo ShrinkwrapUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D8C273D01BE7D96F00AA76BB /* Photo_ShrinkwrapUITests.swift */,
+				D8C273D21BE7D96F00AA76BB /* Info.plist */,
+			);
+			path = "Photo ShrinkwrapUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D8C273AC1BE7D96E00AA76BB /* Photo Shrinkwrap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8C273D51BE7D96F00AA76BB /* Build configuration list for PBXNativeTarget "Photo Shrinkwrap" */;
+			buildPhases = (
+				D8C273A91BE7D96E00AA76BB /* Sources */,
+				D8C273AA1BE7D96E00AA76BB /* Frameworks */,
+				D8C273AB1BE7D96E00AA76BB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Photo Shrinkwrap";
+			productName = "Photo Shrinkwrap";
+			productReference = D8C273AD1BE7D96E00AA76BB /* Photo Shrinkwrap.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D8C273C01BE7D96F00AA76BB /* Photo ShrinkwrapTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8C273D81BE7D96F00AA76BB /* Build configuration list for PBXNativeTarget "Photo ShrinkwrapTests" */;
+			buildPhases = (
+				D8C273BD1BE7D96F00AA76BB /* Sources */,
+				D8C273BE1BE7D96F00AA76BB /* Frameworks */,
+				D8C273BF1BE7D96F00AA76BB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D8C273C31BE7D96F00AA76BB /* PBXTargetDependency */,
+			);
+			name = "Photo ShrinkwrapTests";
+			productName = "Photo ShrinkwrapTests";
+			productReference = D8C273C11BE7D96F00AA76BB /* Photo ShrinkwrapTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D8C273CB1BE7D96F00AA76BB /* Photo ShrinkwrapUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8C273DB1BE7D96F00AA76BB /* Build configuration list for PBXNativeTarget "Photo ShrinkwrapUITests" */;
+			buildPhases = (
+				D8C273C81BE7D96F00AA76BB /* Sources */,
+				D8C273C91BE7D96F00AA76BB /* Frameworks */,
+				D8C273CA1BE7D96F00AA76BB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D8C273CE1BE7D96F00AA76BB /* PBXTargetDependency */,
+			);
+			name = "Photo ShrinkwrapUITests";
+			productName = "Photo ShrinkwrapUITests";
+			productReference = D8C273CC1BE7D96F00AA76BB /* Photo ShrinkwrapUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D8C273A51BE7D96E00AA76BB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "Remus Lazar";
+				TargetAttributes = {
+					D8C273AC1BE7D96E00AA76BB = {
+						CreatedOnToolsVersion = 7.1;
+					};
+					D8C273C01BE7D96F00AA76BB = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = D8C273AC1BE7D96E00AA76BB;
+					};
+					D8C273CB1BE7D96F00AA76BB = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = D8C273AC1BE7D96E00AA76BB;
+					};
+				};
+			};
+			buildConfigurationList = D8C273A81BE7D96E00AA76BB /* Build configuration list for PBXProject "Photo Shrinkwrap" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D8C273A41BE7D96E00AA76BB;
+			productRefGroup = D8C273AE1BE7D96E00AA76BB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D8C273AC1BE7D96E00AA76BB /* Photo Shrinkwrap */,
+				D8C273C01BE7D96F00AA76BB /* Photo ShrinkwrapTests */,
+				D8C273CB1BE7D96F00AA76BB /* Photo ShrinkwrapUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D8C273AB1BE7D96E00AA76BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8C273BB1BE7D96F00AA76BB /* LaunchScreen.storyboard in Resources */,
+				D8C273B81BE7D96F00AA76BB /* Assets.xcassets in Resources */,
+				D8C273B61BE7D96E00AA76BB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8C273BF1BE7D96F00AA76BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8C273CA1BE7D96F00AA76BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D8C273A91BE7D96E00AA76BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8C273B31BE7D96E00AA76BB /* ViewController.swift in Sources */,
+				D8C273B11BE7D96E00AA76BB /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8C273BD1BE7D96F00AA76BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8C273C61BE7D96F00AA76BB /* Photo_ShrinkwrapTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8C273C81BE7D96F00AA76BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8C273D11BE7D96F00AA76BB /* Photo_ShrinkwrapUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D8C273C31BE7D96F00AA76BB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D8C273AC1BE7D96E00AA76BB /* Photo Shrinkwrap */;
+			targetProxy = D8C273C21BE7D96F00AA76BB /* PBXContainerItemProxy */;
+		};
+		D8C273CE1BE7D96F00AA76BB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D8C273AC1BE7D96E00AA76BB /* Photo Shrinkwrap */;
+			targetProxy = D8C273CD1BE7D96F00AA76BB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D8C273B41BE7D96E00AA76BB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D8C273B51BE7D96E00AA76BB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D8C273B91BE7D96F00AA76BB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D8C273BA1BE7D96F00AA76BB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D8C273D31BE7D96F00AA76BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D8C273D41BE7D96F00AA76BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D8C273D61BE7D96F00AA76BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Photo Shrinkwrap/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "lazar.info.Photo-Shrinkwrap";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D8C273D71BE7D96F00AA76BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Photo Shrinkwrap/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "lazar.info.Photo-Shrinkwrap";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		D8C273D91BE7D96F00AA76BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Photo ShrinkwrapTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "lazar.info.Photo-ShrinkwrapTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Photo Shrinkwrap.app/Photo Shrinkwrap";
+			};
+			name = Debug;
+		};
+		D8C273DA1BE7D96F00AA76BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Photo ShrinkwrapTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "lazar.info.Photo-ShrinkwrapTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Photo Shrinkwrap.app/Photo Shrinkwrap";
+			};
+			name = Release;
+		};
+		D8C273DC1BE7D96F00AA76BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Photo ShrinkwrapUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "lazar.info.Photo-ShrinkwrapUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Photo Shrinkwrap";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		D8C273DD1BE7D96F00AA76BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Photo ShrinkwrapUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "lazar.info.Photo-ShrinkwrapUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Photo Shrinkwrap";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D8C273A81BE7D96E00AA76BB /* Build configuration list for PBXProject "Photo Shrinkwrap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8C273D31BE7D96F00AA76BB /* Debug */,
+				D8C273D41BE7D96F00AA76BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D8C273D51BE7D96F00AA76BB /* Build configuration list for PBXNativeTarget "Photo Shrinkwrap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8C273D61BE7D96F00AA76BB /* Debug */,
+				D8C273D71BE7D96F00AA76BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D8C273D81BE7D96F00AA76BB /* Build configuration list for PBXNativeTarget "Photo ShrinkwrapTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8C273D91BE7D96F00AA76BB /* Debug */,
+				D8C273DA1BE7D96F00AA76BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D8C273DB1BE7D96F00AA76BB /* Build configuration list for PBXNativeTarget "Photo ShrinkwrapUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8C273DC1BE7D96F00AA76BB /* Debug */,
+				D8C273DD1BE7D96F00AA76BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D8C273A51BE7D96E00AA76BB /* Project object */;
+}
