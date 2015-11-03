@@ -21,6 +21,8 @@ class PhotosTableViewController: UITableViewController {
         return PHAsset.fetchAssetsWithOptions(options)
     }()
     
+    let pim = PHImageManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,6 +50,13 @@ class PhotosTableViewController: UITableViewController {
             cell.textLabel?.text = NSDateFormatter.localizedStringFromDate(asset.creationDate!, dateStyle: .MediumStyle,
                 timeStyle: .MediumStyle)
             cell.detailTextLabel?.text = "\(asset.pixelWidth) x \(asset.pixelHeight)"
+            pim.requestImageForAsset(asset, targetSize: CGSize(width: 80, height: 80), contentMode: .AspectFill, options: nil) {
+                (image, info) -> Void in
+                print("info: \(info), image: \(image)")
+                if self.tableView.indexPathForCell(cell) == indexPath {
+                    cell.imageView?.image = image
+                }
+            }
         }
 
         return cell
