@@ -50,6 +50,7 @@
                                 <connections>
                                     <outlet property="photoLabel" destination="gx9-wG-5z9" id="pjG-Za-cUz"/>
                                     <outlet property="thumbnail" destination="skF-jO-Duu" id="hhg-Sw-cZN"/>
+                                    <segue destination="Qus-kH-7Ni" kind="show" id="1H0-n9-Wse"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -63,6 +64,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aj9-tg-i9V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1382" y="620"/>
+        </scene>
+        <!--Show Photo View Controller-->
+        <scene sceneID="fnO-dj-v1Q">
+            <objects>
+                <viewController id="Qus-kH-7Ni" customClass="ShowPhotoViewController" customModule="Photo_Shrinkwrap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="78e-i8-7Hm"/>
+                        <viewControllerLayoutGuide type="bottom" id="tvd-HH-tse"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ir3-q0-Wep">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="eHO-RZ-J6B">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <animations/>
+                                <items>
+                                    <barButtonItem title="Small (80kB)" id="bK9-ha-zmh"/>
+                                    <barButtonItem title="Medium (300kB)" id="7pK-UM-cdJ"/>
+                                    <barButtonItem title="Large (1MB)" id="htc-Cc-bxl"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="zYs-R9-Sfu"/>
+                                    <barButtonItem systemItem="trash" id="L2x-c4-EnJ"/>
+                                </items>
+                            </toolbar>
+                            <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cZJ-jI-v8x">
+                                <rect key="frame" x="225" y="309" width="150" height="2"/>
+                                <animations/>
+                            </progressView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8JW-nL-r2y">
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                                <animations/>
+                            </imageView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eHO-RZ-J6B" firstAttribute="leading" secondItem="ir3-q0-Wep" secondAttribute="leadingMargin" constant="-20" id="4Wf-WI-Hqh"/>
+                            <constraint firstItem="eHO-RZ-J6B" firstAttribute="top" secondItem="8JW-nL-r2y" secondAttribute="bottom" id="4ir-RS-7gK"/>
+                            <constraint firstItem="8JW-nL-r2y" firstAttribute="leading" secondItem="ir3-q0-Wep" secondAttribute="leadingMargin" constant="-20" id="K2G-XL-jfm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eHO-RZ-J6B" secondAttribute="trailing" constant="-20" id="TOf-jh-XWg"/>
+                            <constraint firstItem="8JW-nL-r2y" firstAttribute="top" secondItem="78e-i8-7Hm" secondAttribute="bottom" id="VVa-4k-6SA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8JW-nL-r2y" secondAttribute="trailing" constant="-20" id="reM-Fq-ciO"/>
+                            <constraint firstItem="tvd-HH-tse" firstAttribute="top" secondItem="eHO-RZ-J6B" secondAttribute="bottom" id="yPw-Q1-f69"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="8JW-nL-r2y" id="cEB-EM-soq"/>
+                        <outlet property="loadingProgressView" destination="cZJ-jI-v8x" id="rx4-ei-j87"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YzS-R5-P6g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2091" y="620"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kaL-os-XbT">
