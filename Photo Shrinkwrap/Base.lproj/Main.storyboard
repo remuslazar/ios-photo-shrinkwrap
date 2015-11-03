@@ -3,50 +3,54 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--All Photos-->
         <scene sceneID="zJi-3n-65o">
             <objects>
                 <tableViewController id="ykR-gl-MaT" customClass="PhotosTableViewController" customModule="Photo_Shrinkwrap" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="QAW-Eg-jgF">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" sectionHeaderHeight="28" sectionFooterHeight="28" id="QAW-Eg-jgF">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="Photo Cell" textLabel="9zt-Hi-uFf" detailTextLabel="S70-hi-gMO" imageView="vks-i2-fyq" style="IBUITableViewCellStyleValue1" id="2hC-Gb-thg">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="Photo Cell" rowHeight="85" id="2hC-Gb-thg" customClass="PhotoTableViewCell" customModule="Photo_Shrinkwrap" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="85"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2hC-Gb-thg" id="Z6O-SK-4sK">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="84"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9zt-Hi-uFf">
-                                            <rect key="frame" x="70" y="12" width="32" height="20"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="skF-jO-Duu">
+                                            <rect key="frame" x="0.0" y="0.0" width="84" height="84"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gx9-wG-5z9">
+                                            <rect key="frame" x="92" y="31" width="42" height="21"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="S70-hi-gMO">
-                                            <rect key="frame" x="543" y="12" width="42" height="20"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Photo 40x40" id="vks-i2-fyq">
-                                            <rect key="frame" x="15" y="1" width="40" height="40"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <animations/>
-                                        </imageView>
                                     </subviews>
                                     <animations/>
+                                    <constraints>
+                                        <constraint firstItem="gx9-wG-5z9" firstAttribute="leading" secondItem="skF-jO-Duu" secondAttribute="trailing" constant="8" symbolic="YES" id="4yW-q3-9n5"/>
+                                        <constraint firstItem="skF-jO-Duu" firstAttribute="top" secondItem="Z6O-SK-4sK" secondAttribute="topMargin" constant="-8" id="63I-9e-S8e"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="skF-jO-Duu" secondAttribute="bottom" constant="-8" id="CgY-7X-lYg"/>
+                                        <constraint firstItem="gx9-wG-5z9" firstAttribute="centerY" secondItem="skF-jO-Duu" secondAttribute="centerY" id="FX7-vQ-1Nc"/>
+                                        <constraint firstItem="skF-jO-Duu" firstAttribute="leading" secondItem="Z6O-SK-4sK" secondAttribute="leadingMargin" constant="-8" id="hmc-aD-WI0"/>
+                                        <constraint firstItem="skF-jO-Duu" firstAttribute="width" secondItem="Z6O-SK-4sK" secondAttribute="height" id="xcQ-B4-Ult"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <outlet property="photoLabel" destination="gx9-wG-5z9" id="pjG-Za-cUz"/>
+                                    <outlet property="thumbnail" destination="skF-jO-Duu" id="hhg-Sw-cZN"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -80,7 +84,4 @@
             <point key="canvasLocation" x="570" y="620"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Photo 40x40" width="40" height="40"/>
-    </resources>
 </document>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D8944B7F1BE8A05900325193 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8944B7E1BE8A05900325193 /* PhotoTableViewCell.swift */; };
 		D8C273B11BE7D96E00AA76BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C273B01BE7D96E00AA76BB /* AppDelegate.swift */; };
 		D8C273B61BE7D96E00AA76BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8C273B41BE7D96E00AA76BB /* Main.storyboard */; };
 		D8C273B81BE7D96F00AA76BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8C273B71BE7D96F00AA76BB /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D8944B7E1BE8A05900325193 /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
 		D8C273AD1BE7D96E00AA76BB /* Photo Shrinkwrap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Photo Shrinkwrap.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8C273B01BE7D96E00AA76BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8C273B51BE7D96E00AA76BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				D8C273DE1BE7DBBA00AA76BB /* PhotosTableViewController.swift */,
 				D8C273B01BE7D96E00AA76BB /* AppDelegate.swift */,
 				D8C273B41BE7D96E00AA76BB /* Main.storyboard */,
+				D8944B7E1BE8A05900325193 /* PhotoTableViewCell.swift */,
 				D8C273B71BE7D96F00AA76BB /* Assets.xcassets */,
 				D8C273B91BE7D96F00AA76BB /* LaunchScreen.storyboard */,
 				D8C273BC1BE7D96F00AA76BB /* Info.plist */,
@@ -258,6 +261,7 @@
 			files = (
 				D8C273DF1BE7DBBA00AA76BB /* PhotosTableViewController.swift in Sources */,
 				D8C273B11BE7D96E00AA76BB /* AppDelegate.swift in Sources */,
+				D8944B7F1BE8A05900325193 /* PhotoTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +488,7 @@
 				D8C273D71BE7D96F00AA76BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D8C273D81BE7D96F00AA76BB /* Build configuration list for PBXNativeTarget "Photo ShrinkwrapTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +497,7 @@
 				D8C273DA1BE7D96F00AA76BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D8C273DB1BE7D96F00AA76BB /* Build configuration list for PBXNativeTarget "Photo ShrinkwrapUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +506,7 @@
 				D8C273DD1BE7D96F00AA76BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

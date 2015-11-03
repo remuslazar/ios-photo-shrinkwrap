@@ -12,7 +12,8 @@ import Photos
 class PhotosTableViewController: UITableViewController {
 
     struct Storyboard {
-       static let CellIdentifier = "Photo Cell"
+        static let CellIdentifier = "Photo Cell"
+        static let PhotoSize = CGSize(width: 80, height: 80)
     }
     
     let allPhotos: PHFetchResult = {
@@ -45,16 +46,16 @@ class PhotosTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellIdentifier, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellIdentifier,
+            forIndexPath: indexPath) as! PhotoTableViewCell
+        
         if let asset = allPhotos[indexPath.row] as? PHAsset {
-            cell.textLabel?.text = NSDateFormatter.localizedStringFromDate(asset.creationDate!, dateStyle: .MediumStyle,
+            cell.photoLabel.text = NSDateFormatter.localizedStringFromDate(asset.creationDate!, dateStyle: .MediumStyle,
                 timeStyle: .MediumStyle)
-            cell.detailTextLabel?.text = "\(asset.pixelWidth) x \(asset.pixelHeight)"
-            pim.requestImageForAsset(asset, targetSize: CGSize(width: 80, height: 80), contentMode: .AspectFill, options: nil) {
+            pim.requestImageForAsset(asset, targetSize: Storyboard.PhotoSize, contentMode: .AspectFill, options: nil) {
                 (image, info) -> Void in
-                print("info: \(info), image: \(image)")
-                if self.tableView.indexPathForCell(cell) == indexPath {
-                    cell.imageView?.image = image
+                if self.tableView.indexPathForCell(cell) == indexPath { // check if the cell is still the same as before
+                    cell.thumbnail.image = image
                 }
             }
         }
