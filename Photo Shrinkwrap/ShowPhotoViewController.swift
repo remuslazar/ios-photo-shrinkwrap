@@ -15,6 +15,7 @@ class ShowPhotoViewController: UIViewController {
     var photo: PHAsset!
     
     private let pim = PHImageManager()
+    private var requestIdentifier: PHImageRequestID = 0
     
     private func fetchImage() {
 
@@ -33,12 +34,15 @@ class ShowPhotoViewController: UIViewController {
             }
         }
         options.networkAccessAllowed = true
-        print("\(self.imageView.bounds.size)")
-        pim.requestImageForAsset(photo, targetSize: self.imageView.bounds.size, contentMode: .AspectFill, options: options) {
+        requestIdentifier = pim.requestImageForAsset(photo, targetSize: self.imageView.bounds.size, contentMode: .AspectFill, options: options) {
             (image, info) -> Void in
-            print("\(image?.size)")
-            self.loadingProgressView.hidden = true
+            if !info![PHImageResultIsDegradedKey]!.boolValue {
+                self.requestIdentifier = 0
+                self.loadingProgressView.hidden = true
+            }
             self.imageView.image = image
+            self.imageView.clipsToBounds = true
+            self.imageView.contentMode = .ScaleAspectFit
         }
     }
     
@@ -46,14 +50,25 @@ class ShowPhotoViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var loadingProgressView: UIProgressView!
+
+    // MARK: - ViewController Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
-
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         fetchImage()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if requestIdentifier != 0 {
+            // cancel a pending request if the view will go away
+            pim.cancelImageRequest(requestIdentifier)
+        }
     }
 
     override func didReceiveMemoryWarning() {

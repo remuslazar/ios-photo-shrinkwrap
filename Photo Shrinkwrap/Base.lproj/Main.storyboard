@@ -88,23 +88,26 @@
                                     <barButtonItem systemItem="trash" id="L2x-c4-EnJ"/>
                                 </items>
                             </toolbar>
-                            <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cZJ-jI-v8x">
-                                <rect key="frame" x="225" y="309" width="150" height="2"/>
-                                <animations/>
-                            </progressView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8JW-nL-r2y">
                                 <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <animations/>
                             </imageView>
+                            <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cZJ-jI-v8x">
+                                <rect key="frame" x="0.0" y="557" width="600" height="2"/>
+                                <animations/>
+                            </progressView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="cZJ-jI-v8x" firstAttribute="trailing" secondItem="eHO-RZ-J6B" secondAttribute="trailing" id="0W5-cX-HSm"/>
                             <constraint firstItem="eHO-RZ-J6B" firstAttribute="leading" secondItem="ir3-q0-Wep" secondAttribute="leadingMargin" constant="-20" id="4Wf-WI-Hqh"/>
                             <constraint firstItem="eHO-RZ-J6B" firstAttribute="top" secondItem="8JW-nL-r2y" secondAttribute="bottom" id="4ir-RS-7gK"/>
                             <constraint firstItem="8JW-nL-r2y" firstAttribute="leading" secondItem="ir3-q0-Wep" secondAttribute="leadingMargin" constant="-20" id="K2G-XL-jfm"/>
+                            <constraint firstItem="eHO-RZ-J6B" firstAttribute="top" secondItem="cZJ-jI-v8x" secondAttribute="bottom" constant="-3" id="SBL-Gd-OM0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="eHO-RZ-J6B" secondAttribute="trailing" constant="-20" id="TOf-jh-XWg"/>
                             <constraint firstItem="8JW-nL-r2y" firstAttribute="top" secondItem="78e-i8-7Hm" secondAttribute="bottom" id="VVa-4k-6SA"/>
+                            <constraint firstItem="cZJ-jI-v8x" firstAttribute="leading" secondItem="eHO-RZ-J6B" secondAttribute="leading" id="jPf-jP-nei"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8JW-nL-r2y" secondAttribute="trailing" constant="-20" id="reM-Fq-ciO"/>
                             <constraint firstItem="tvd-HH-tse" firstAttribute="top" secondItem="eHO-RZ-J6B" secondAttribute="bottom" id="yPw-Q1-f69"/>
                         </constraints>
