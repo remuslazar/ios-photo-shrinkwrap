@@ -79,6 +79,7 @@ class ShowPhotoViewController: UIViewController, PHPhotoLibraryChangeObserver {
             return adjustmentData.formatIdentifier == Constants.AdjustmentFormatIdentifier
         }
         
+        spinner.startAnimating()
         photo.requestContentEditingInputWithOptions(options) { (contentEditingInput, info) in
             let url = contentEditingInput!.fullSizeImageURL!
             let orientation = contentEditingInput!.fullSizeImageOrientation
@@ -110,6 +111,9 @@ class ShowPhotoViewController: UIViewController, PHPhotoLibraryChangeObserver {
                 let request = PHAssetChangeRequest(forAsset: self.photo)
                 request.contentEditingOutput = contentEditingOutput
                 }, completionHandler: { (success, _) in
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.spinner.stopAnimating()
+                    }
                     if (!success) { print("PHAssetChangeRequest failed") }
             })
         }
@@ -134,6 +138,7 @@ class ShowPhotoViewController: UIViewController, PHPhotoLibraryChangeObserver {
         }
     }
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var deleteButton: UIBarButtonItem!
     @IBAction func handleDelete(sender: AnyObject) {
         PHPhotoLibrary.sharedPhotoLibrary().performChanges({ () -> Void in
