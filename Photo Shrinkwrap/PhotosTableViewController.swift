@@ -93,9 +93,10 @@ class PhotosTableViewController: UITableViewController, PHPhotoLibraryChangeObse
         if let asset = allPhotos[indexPath.row] as? PHAsset {
             cell.photoLabel.text = NSDateFormatter.localizedStringFromDate(asset.creationDate!, dateStyle: .MediumStyle,
                 timeStyle: .MediumStyle)
+            cell.representedAssetIdentifier = asset.localIdentifier
             pim.requestImageForAsset(asset, targetSize: Storyboard.PhotoSize, contentMode: .AspectFill, options: nil) {
                 (image, info) -> Void in
-                if self.tableView.indexPathForCell(cell) == indexPath { // check if the cell is still the same as before
+                if cell.representedAssetIdentifier == asset.localIdentifier { // check if the cell is still the same as before
                     cell.thumbnail.image = image
                     cell.thumbnail.contentMode = .ScaleAspectFill
                     cell.thumbnail.clipsToBounds = true

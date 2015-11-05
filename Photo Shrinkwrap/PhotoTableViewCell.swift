@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 class PhotoTableViewCell: UITableViewCell {
 
@@ -20,6 +21,9 @@ class PhotoTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    var representedAssetIdentifier: String?
+    
     @IBOutlet weak var thumbnail: UIImageView!
     @IBOutlet weak var photoLabel: UILabel!
 
