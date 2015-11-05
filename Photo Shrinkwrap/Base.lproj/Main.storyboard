@@ -127,7 +127,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="zYs-R9-Sfu"/>
                                     <barButtonItem title="Original" style="plain" id="mkl-Fh-REc">
                                         <connections>
-                                            <action selector="resizePhoto:" destination="Qus-kH-7Ni" id="914-He-IkD"/>
+                                            <action selector="revertChanges:" destination="Qus-kH-7Ni" id="jcr-Gz-3Ac"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Nti-bT-8DN"/>

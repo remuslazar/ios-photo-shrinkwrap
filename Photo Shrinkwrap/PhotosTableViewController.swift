@@ -80,13 +80,6 @@ class PhotosTableViewController: UITableViewController, PHPhotoLibraryChangeObse
         }
     }
     
-    private func getURLForAsset(asset: PHAsset, completionHandler: (url: NSURL?) -> Void) {
-        let options = PHContentEditingInputRequestOptions()
-        asset.requestContentEditingInputWithOptions(options) { (contentEditingInput, info) in
-            completionHandler(url: contentEditingInput?.fullSizeImageURL)
-        }
-    }
-    
     // MARK: - Table view data source
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -108,12 +101,11 @@ class PhotosTableViewController: UITableViewController, PHPhotoLibraryChangeObse
             }
             cell.resolutionLabel.text = "\(asset.pixelWidth) x \(asset.pixelHeight)"
             
-            getURLForAsset(asset) { (url) in
+            asset.getURLWithCompletionHandler { (url) in
                 if cell.representedAssetIdentifier == asset.localIdentifier { // check if the cell is still the same as before
                     if let url = url {
-                        let info = try! url.resourceValuesForKeys([NSURLFileSizeKey])
-                        if let fileSize = info[NSURLFileSizeKey] {
-                            let fileSizeString = NSByteCountFormatter.stringFromByteCount(Int64(fileSize.integerValue),
+                        if let fileSize = url.fileSize {
+                            let fileSizeString = NSByteCountFormatter.stringFromByteCount(Int64(fileSize),
                                 countStyle: .File)
                             cell.resolutionLabel.text! += " \(fileSizeString)"
                         }

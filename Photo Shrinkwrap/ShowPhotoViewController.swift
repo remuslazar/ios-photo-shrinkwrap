@@ -53,7 +53,18 @@ class ShowPhotoViewController: UIViewController, PHPhotoLibraryChangeObserver {
             if !info![PHImageResultIsDegradedKey]!.boolValue {
                 self.requestIdentifier = 0
                 self.loadingProgressView.hidden = true
-                self.title = "\(Int(image!.size.width)) x \(Int(image!.size.height))"
+                self.title = "\(Int(image!.size.width))x\(Int(image!.size.height))"
+                
+                self.photo.getURLWithCompletionHandler { (url) in
+                    if let url = url,
+                        let fileSize = url.fileSize {
+                            let fileSizeString = NSByteCountFormatter.stringFromByteCount(Int64(fileSize),
+                                countStyle: .File)
+                            self.title! += " \(fileSizeString)"
+                    }
+                }
+
+                
             }
             self.imageView.image = image
             self.imageView.clipsToBounds = true
@@ -113,6 +124,16 @@ class ShowPhotoViewController: UIViewController, PHPhotoLibraryChangeObserver {
         // 1: small, 2: medium, 3: large
         resizeImage(ResizePresets.MegaPixelsForTag[sender.tag]!)
     }
+
+    @IBAction func revertChanges(sender: AnyObject) {
+        PHPhotoLibrary.sharedPhotoLibrary().performChanges({ () -> Void in
+            let request = PHAssetChangeRequest(forAsset: self.photo)
+            request.revertAssetContentToOriginal()
+            }) { (success, error) -> Void in
+                
+        }
+    }
+    
     @IBOutlet weak var deleteButton: UIBarButtonItem!
     @IBAction func handleDelete(sender: AnyObject) {
         PHPhotoLibrary.sharedPhotoLibrary().performChanges({ () -> Void in
