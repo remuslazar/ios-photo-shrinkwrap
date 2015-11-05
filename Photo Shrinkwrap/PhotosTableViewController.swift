@@ -96,8 +96,9 @@ class PhotosTableViewController: UITableViewController, PHPhotoLibraryChangeObse
             pim.requestImageForAsset(asset, targetSize: Storyboard.PhotoSize, contentMode: .AspectFill, options: nil) {
                 (image, info) -> Void in
                 if self.tableView.indexPathForCell(cell) == indexPath { // check if the cell is still the same as before
-//                    print("\(info)")
                     cell.thumbnail.image = image
+                    cell.thumbnail.contentMode = .ScaleAspectFill
+                    cell.thumbnail.clipsToBounds = true
                 }
             }
         }
