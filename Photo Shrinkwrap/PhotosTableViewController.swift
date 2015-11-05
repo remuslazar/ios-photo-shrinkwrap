@@ -53,7 +53,29 @@ class PhotosTableViewController: UITableViewController, PHPhotoLibraryChangeObse
         dispatch_async(dispatch_get_main_queue()) {
             if let changeDetails = changeInstance.changeDetailsForFetchResult(self.allPhotos) {
                 self.allPhotos = changeDetails.fetchResultAfterChanges
-                self.tableView.reloadData()
+                
+                if changeDetails.hasIncrementalChanges || changeDetails.hasMoves {
+                    
+                    // perform a batch deletion/insertion/update on the table
+                    self.tableView.beginUpdates()
+                    
+                    if let removedIndexes = changeDetails.removedIndexes {
+                        self.tableView.deleteRowsAtIndexPaths(removedIndexes.getIndexPathArray(), withRowAnimation: .Fade)
+                    }
+                    if let insertedIndexes = changeDetails.insertedIndexes {
+                        self.tableView.insertRowsAtIndexPaths(insertedIndexes.getIndexPathArray(), withRowAnimation: .Fade)
+                    }
+                    if let updatedIndexes = changeDetails.changedIndexes {
+                        self.tableView.reloadRowsAtIndexPaths(updatedIndexes.getIndexPathArray(), withRowAnimation: .Fade)
+                    }
+                    
+                    self.tableView.endUpdates()
+                    
+                } else {
+                    // reload table if incremental diffs are not available
+                    self.tableView.reloadData()
+                }
+                
             }
         }
     }
@@ -74,6 +96,7 @@ class PhotosTableViewController: UITableViewController, PHPhotoLibraryChangeObse
             pim.requestImageForAsset(asset, targetSize: Storyboard.PhotoSize, contentMode: .AspectFill, options: nil) {
                 (image, info) -> Void in
                 if self.tableView.indexPathForCell(cell) == indexPath { // check if the cell is still the same as before
+//                    print("\(info)")
                     cell.thumbnail.image = image
                 }
             }
@@ -128,5 +151,11 @@ class PhotosTableViewController: UITableViewController, PHPhotoLibraryChangeObse
             dvc.photo = asset
         }
     }
+    
+}
 
+extension NSIndexSet {
+    func getIndexPathArray() -> [NSIndexPath] {
+        return self.map { index in NSIndexPath(forRow: index, inSection: 0) }
+    }
 }
