@@ -81,21 +81,33 @@
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <animations/>
                                 <items>
-                                    <barButtonItem title="Small (80kB)" id="bK9-ha-zmh"/>
-                                    <barButtonItem title="Medium (300kB)" id="7pK-UM-cdJ"/>
-                                    <barButtonItem title="Large (1MB)" id="htc-Cc-bxl"/>
+                                    <barButtonItem tag="1" title="Small (80kB)" id="bK9-ha-zmh">
+                                        <connections>
+                                            <action selector="resizePhoto:" destination="Qus-kH-7Ni" id="5nc-iv-hw9"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="2" title="Medium (300kB)" id="7pK-UM-cdJ">
+                                        <connections>
+                                            <action selector="resizePhoto:" destination="Qus-kH-7Ni" id="1PZ-KC-1On"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="3" title="Large (1MB)" id="htc-Cc-bxl">
+                                        <connections>
+                                            <action selector="resizePhoto:" destination="Qus-kH-7Ni" id="z3x-Il-psd"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="zYs-R9-Sfu"/>
                                     <barButtonItem systemItem="trash" id="L2x-c4-EnJ"/>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8JW-nL-r2y">
-                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
-                                <animations/>
-                            </imageView>
                             <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cZJ-jI-v8x">
                                 <rect key="frame" x="0.0" y="557" width="600" height="2"/>
                                 <animations/>
                             </progressView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8JW-nL-r2y">
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                                <animations/>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

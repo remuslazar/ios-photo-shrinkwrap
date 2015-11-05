@@ -9,23 +9,26 @@
 import UIKit
 import Photos
 
-class PhotosTableViewController: UITableViewController {
+class PhotosTableViewController: UITableViewController, PHPhotoLibraryChangeObserver {
 
     struct Storyboard {
         static let CellIdentifier = "Photo Cell"
         static let PhotoSize = CGSize(width: 80, height: 80)
     }
     
-    let allPhotos: PHFetchResult = {
+    var allPhotos: PHFetchResult = {
         let options = PHFetchOptions()
-        options.sortDescriptors?.append(NSSortDescriptor(key: "creationDate", ascending: false))
-        return PHAsset.fetchAssetsWithOptions(options)
+        options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        return PHAsset.fetchAssetsWithMediaType(.Image, options: options)
     }()
     
     let pim = PHImageManager()
     
+    // MARK: - View Life Cycle Methods
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        PHPhotoLibrary.sharedPhotoLibrary().registerChangeObserver(self)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -33,12 +36,28 @@ class PhotosTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
+    
+    deinit {
+        PHPhotoLibrary.sharedPhotoLibrary().unregisterChangeObserver(self)
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    // MARK: - PHPhotoLibraryChangeObserver
+    
+    func photoLibraryDidChange(changeInstance: PHChange) {
+        dispatch_async(dispatch_get_main_queue()) {
+            if let changeDetails = changeInstance.changeDetailsForFetchResult(self.allPhotos) {
+                self.allPhotos = changeDetails.fetchResultAfterChanges
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
