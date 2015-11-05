@@ -69,47 +69,43 @@ class ShowPhotoViewController: UIViewController, PHPhotoLibraryChangeObserver {
         }
         
         photo.requestContentEditingInputWithOptions(options) { (contentEditingInput, info) in
-            if let url = contentEditingInput?.fullSizeImageURL,
-                let orientation = contentEditingInput?.fullSizeImageOrientation,
-                let inputImage = CIImage(contentsOfURL: url) {
-                    
-                    // scale the image to the desired resolution
-                    let scale = sqrt(CGFloat(megaPixel * 1_000_000) / (inputImage.extent.height * inputImage.extent.width))
-                    
-                    let filter = CIFilter(
-                        name: "CILanczosScaleTransform",
-                        //name: "CISepiaTone",
-                        withInputParameters: [
-                            kCIInputImageKey: inputImage.imageByApplyingOrientation(orientation),
-                            kCIInputScaleKey: scale,
-                            kCIInputAspectRatioKey: 1.0
-                        ])
-                    let outputImage = filter!.outputImage
-                    let adjustmentData = PHAdjustmentData(
-                        formatIdentifier: Constants.AdjustmentFormatIdentifier,
-                        formatVersion: Constants.AdjustmentFormatVersion,
-                        data: "\(megaPixel)".dataUsingEncoding(NSUTF8StringEncoding)!)
-                    let contentEditingOutput = PHContentEditingOutput(contentEditingInput: contentEditingInput!)
-                    
-                    let jpegData = outputImage!.jpegRepresentationWithCompressionQuality(ResizePresets.jpegCompressionQuality)
-                    jpegData.writeToURL(contentEditingOutput.renderedContentURL, atomically: true)
-                    contentEditingOutput.adjustmentData = adjustmentData
-                    
-                    // perform the changes
-                    PHPhotoLibrary.sharedPhotoLibrary().performChanges({ () -> Void in
-                        let request = PHAssetChangeRequest(forAsset: self.photo)
-                        request.contentEditingOutput = contentEditingOutput
-                        }, completionHandler: { (success, _) -> Void in
-                            if (!success) {
-                                print("PHAssetChangeRequest failed")
-                            }
-                    })
-            }
+            let url = contentEditingInput!.fullSizeImageURL!
+            let orientation = contentEditingInput!.fullSizeImageOrientation
+            let inputImage = CIImage(contentsOfURL: url)!
+                
+            // scale the image to the desired resolution
+            let scale = sqrt(CGFloat(megaPixel * 1_000_000) / (inputImage.extent.height * inputImage.extent.width))
+            
+            let filter = CIFilter(
+                name: "CILanczosScaleTransform",
+                withInputParameters: [
+                    kCIInputImageKey: inputImage.imageByApplyingOrientation(orientation),
+                    kCIInputScaleKey: scale,
+                    kCIInputAspectRatioKey: 1.0
+                ])
+            let outputImage = filter!.outputImage
+            let adjustmentData = PHAdjustmentData(
+                formatIdentifier: Constants.AdjustmentFormatIdentifier,
+                formatVersion: Constants.AdjustmentFormatVersion,
+                data: "\(megaPixel)".dataUsingEncoding(NSUTF8StringEncoding)!)
+            let contentEditingOutput = PHContentEditingOutput(contentEditingInput: contentEditingInput!)
+            
+            let jpegData = outputImage!.jpegRepresentationWithCompressionQuality(ResizePresets.jpegCompressionQuality)
+            jpegData.writeToURL(contentEditingOutput.renderedContentURL, atomically: true)
+            contentEditingOutput.adjustmentData = adjustmentData
+            
+            // perform the changes
+            PHPhotoLibrary.sharedPhotoLibrary().performChanges({ () -> Void in
+                let request = PHAssetChangeRequest(forAsset: self.photo)
+                request.contentEditingOutput = contentEditingOutput
+                }, completionHandler: { (success, _) in
+                    if (!success) { print("PHAssetChangeRequest failed") }
+            })
         }
     }
-    
+
     // MARK: - Outlets
-    
+
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var loadingProgressView: UIProgressView!
     @IBAction func resizePhoto(sender: UIBarButtonItem) {
