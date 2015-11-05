@@ -80,6 +80,13 @@ class PhotosTableViewController: UITableViewController, PHPhotoLibraryChangeObse
         }
     }
     
+    private func getURLForAsset(asset: PHAsset, completionHandler: (url: NSURL?) -> Void) {
+        let options = PHContentEditingInputRequestOptions()
+        asset.requestContentEditingInputWithOptions(options) { (contentEditingInput, info) in
+            completionHandler(url: contentEditingInput?.fullSizeImageURL)
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -91,10 +98,35 @@ class PhotosTableViewController: UITableViewController, PHPhotoLibraryChangeObse
             forIndexPath: indexPath) as! PhotoTableViewCell
         
         if let asset = allPhotos[indexPath.row] as? PHAsset {
+            cell.representedAssetIdentifier = asset.localIdentifier
+            
             cell.photoLabel.text = NSDateFormatter.localizedStringFromDate(asset.creationDate!, dateStyle: .MediumStyle,
                 timeStyle: .MediumStyle)
-            cell.representedAssetIdentifier = asset.localIdentifier
-            pim.requestImageForAsset(asset, targetSize: Storyboard.PhotoSize, contentMode: .AspectFill, options: nil) {
+            
+            if let resource = PHAssetResource.assetResourcesForAsset(asset).first {
+                cell.filenameLabel.text = resource.originalFilename
+            }
+            cell.resolutionLabel.text = "\(asset.pixelWidth) x \(asset.pixelHeight)"
+            
+            getURLForAsset(asset) { (url) in
+                if cell.representedAssetIdentifier == asset.localIdentifier { // check if the cell is still the same as before
+                    if let url = url {
+                        let info = try! url.resourceValuesForKeys([NSURLFileSizeKey])
+                        if let fileSize = info[NSURLFileSizeKey] {
+                            let fileSizeString = NSByteCountFormatter.stringFromByteCount(Int64(fileSize.integerValue),
+                                countStyle: .File)
+                            cell.resolutionLabel.text! += " \(fileSizeString)"
+                        }
+                    }
+                }
+            }
+
+
+            let options = PHImageRequestOptions()
+            // we dont want to go out to the network to fetch the thumbnails
+            options.networkAccessAllowed = false
+
+            pim.requestImageForAsset(asset, targetSize: Storyboard.PhotoSize, contentMode: .AspectFill, options: options) {
                 (image, info) -> Void in
                 if cell.representedAssetIdentifier == asset.localIdentifier { // check if the cell is still the same as before
                     cell.thumbnail.image = image

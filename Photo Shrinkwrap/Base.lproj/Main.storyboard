@@ -28,27 +28,53 @@
                                             <rect key="frame" x="0.0" y="0.0" width="84" height="84"/>
                                             <animations/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gx9-wG-5z9">
-                                            <rect key="frame" x="92" y="31" width="42" height="21"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dAr-ub-lg2">
+                                            <rect key="frame" x="92" y="34" width="68" height="17"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date/Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gx9-wG-5z9">
+                                                    <rect key="frame" x="0.0" y="0.0" width="68" height="17"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        </stackView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filename" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ob2-c9-yj0">
+                                            <rect key="frame" x="92" y="8" width="69" height="20"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resolution" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hux-iR-D3s">
+                                            <rect key="frame" x="92" y="59" width="68" height="17"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <animations/>
                                     <constraints>
-                                        <constraint firstItem="gx9-wG-5z9" firstAttribute="leading" secondItem="skF-jO-Duu" secondAttribute="trailing" constant="8" symbolic="YES" id="4yW-q3-9n5"/>
                                         <constraint firstItem="skF-jO-Duu" firstAttribute="top" secondItem="Z6O-SK-4sK" secondAttribute="topMargin" constant="-8" id="63I-9e-S8e"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="skF-jO-Duu" secondAttribute="bottom" constant="-8" id="CgY-7X-lYg"/>
-                                        <constraint firstItem="gx9-wG-5z9" firstAttribute="centerY" secondItem="skF-jO-Duu" secondAttribute="centerY" id="FX7-vQ-1Nc"/>
+                                        <constraint firstItem="hux-iR-D3s" firstAttribute="bottom" secondItem="Z6O-SK-4sK" secondAttribute="bottomMargin" id="VuW-G5-1CS"/>
+                                        <constraint firstItem="dAr-ub-lg2" firstAttribute="leading" secondItem="skF-jO-Duu" secondAttribute="trailing" constant="8" symbolic="YES" id="ZKe-DW-Wad"/>
+                                        <constraint firstItem="dAr-ub-lg2" firstAttribute="leading" secondItem="hux-iR-D3s" secondAttribute="leading" id="bif-ys-Vzl"/>
+                                        <constraint firstItem="dAr-ub-lg2" firstAttribute="centerY" secondItem="skF-jO-Duu" secondAttribute="centerY" id="fHX-85-9Qt"/>
                                         <constraint firstItem="skF-jO-Duu" firstAttribute="leading" secondItem="Z6O-SK-4sK" secondAttribute="leadingMargin" constant="-8" id="hmc-aD-WI0"/>
+                                        <constraint firstItem="Ob2-c9-yj0" firstAttribute="top" secondItem="Z6O-SK-4sK" secondAttribute="topMargin" id="mSd-JG-Mhy"/>
+                                        <constraint firstItem="dAr-ub-lg2" firstAttribute="leading" secondItem="Ob2-c9-yj0" secondAttribute="leading" id="vJi-Hz-PGE"/>
                                         <constraint firstItem="skF-jO-Duu" firstAttribute="width" secondItem="Z6O-SK-4sK" secondAttribute="height" id="xcQ-B4-Ult"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
+                                    <outlet property="filenameLabel" destination="Ob2-c9-yj0" id="bzg-qu-bBp"/>
                                     <outlet property="photoLabel" destination="gx9-wG-5z9" id="pjG-Za-cUz"/>
+                                    <outlet property="resolutionLabel" destination="hux-iR-D3s" id="iFy-u5-Pxc"/>
                                     <outlet property="thumbnail" destination="skF-jO-Duu" id="hhg-Sw-cZN"/>
                                     <segue destination="Qus-kH-7Ni" kind="show" id="1H0-n9-Wse"/>
                                 </connections>

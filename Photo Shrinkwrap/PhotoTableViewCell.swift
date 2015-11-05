@@ -26,5 +26,7 @@ class PhotoTableViewCell: UITableViewCell {
     
     @IBOutlet weak var thumbnail: UIImageView!
     @IBOutlet weak var photoLabel: UILabel!
+    @IBOutlet weak var resolutionLabel: UILabel!
+    @IBOutlet weak var filenameLabel: UILabel!
 
 }
