@@ -113,6 +113,20 @@ class ShowPhotoViewController: UIViewController, PHPhotoLibraryChangeObserver {
         // 1: small, 2: medium, 3: large
         resizeImage(ResizePresets.MegaPixelsForTag[sender.tag]!)
     }
+    @IBOutlet weak var deleteButton: UIBarButtonItem!
+    @IBAction func handleDelete(sender: AnyObject) {
+        PHPhotoLibrary.sharedPhotoLibrary().performChanges({ () -> Void in
+            PHAssetChangeRequest.deleteAssets([self.photo])
+            }) { (success, error) -> Void in
+                if (!success) {
+                    print("Deletion request for asset \(self.photo) failed")
+                } else {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.navigationController?.popViewControllerAnimated(true)
+                    }
+                }
+        }
+    }
 
     // MARK: - ViewController Life Cycle
     
@@ -122,6 +136,7 @@ class ShowPhotoViewController: UIViewController, PHPhotoLibraryChangeObserver {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        deleteButton.enabled = photo.canPerformEditOperation(.Delete)
         PHPhotoLibrary.sharedPhotoLibrary().registerChangeObserver(self)
     }
     
@@ -145,10 +160,17 @@ class ShowPhotoViewController: UIViewController, PHPhotoLibraryChangeObserver {
     
     // MARK: - PHPhotoLibraryChangeObserver
     func photoLibraryDidChange(changeInstance: PHChange) {
+        if photo == nil { return }
+        
         dispatch_async(dispatch_get_main_queue()) {
             if let changeDetails = changeInstance.changeDetailsForObject(self.photo) {
-                self.photo = changeDetails.objectAfterChanges as! PHAsset
-                if (changeDetails.assetContentChanged) {
+                if let photo = changeDetails.objectAfterChanges as? PHAsset {
+                    self.photo = photo
+                    if (changeDetails.assetContentChanged) {
+                        self.fetchImage()
+                    }
+                } else {
+                    self.photo = nil
                     self.fetchImage()
                 }
             }
