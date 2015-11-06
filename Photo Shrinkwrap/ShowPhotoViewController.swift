@@ -114,7 +114,6 @@ class ShowPhotoViewController: UIViewController, PHPhotoLibraryChangeObserver {
                     dispatch_async(dispatch_get_main_queue()) {
                         self.spinner.stopAnimating()
                     }
-                    if (!success) { print("PHAssetChangeRequest failed") }
             })
         }
     }
@@ -143,11 +142,7 @@ class ShowPhotoViewController: UIViewController, PHPhotoLibraryChangeObserver {
     @IBAction func handleDelete(sender: AnyObject) {
         PHPhotoLibrary.sharedPhotoLibrary().performChanges({ () -> Void in
             PHAssetChangeRequest.deleteAssets([self.photo])
-            }) { (success, error) -> Void in
-                if (!success) {
-                    print("Deletion request for asset \(self.photo) failed")
-                }
-        }
+            }, completionHandler: nil)
     }
 
     // MARK: - ViewController Life Cycle
