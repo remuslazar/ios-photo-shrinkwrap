@@ -139,13 +139,23 @@ class PhotosTableViewController: UITableViewController, PHPhotoLibraryChangeObse
     }
     */
 
+    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        return .Delete
+    }
+    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             if let asset = allPhotos[indexPath.row] as? PHAsset {
                 PHPhotoLibrary.sharedPhotoLibrary().performChanges({
                     PHAssetChangeRequest.deleteAssets([asset])
-                    }, completionHandler: nil)
+                    }) { (success, _) in
+                        if (!success) {
+                            dispatch_async(dispatch_get_main_queue()) {
+                                self.tableView.editing = false
+                            }
+                        }
+                }
             }
         }
     }
