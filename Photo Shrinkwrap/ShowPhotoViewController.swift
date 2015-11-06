@@ -158,7 +158,7 @@ class ShowPhotoViewController: UIViewController, PHPhotoLibraryChangeObserver {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        deleteButton.enabled = photo.canPerformEditOperation(.Delete)
+        deleteButton.enabled = photo != nil && photo.canPerformEditOperation(.Delete)
         PHPhotoLibrary.sharedPhotoLibrary().registerChangeObserver(self)
     }
     

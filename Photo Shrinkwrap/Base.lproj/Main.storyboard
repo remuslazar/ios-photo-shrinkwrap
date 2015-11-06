@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Eld-ue-aQ8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Iw2-VX-YQn">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -75,7 +75,7 @@
                                     <outlet property="photoLabel" destination="gx9-wG-5z9" id="pjG-Za-cUz"/>
                                     <outlet property="resolutionLabel" destination="hux-iR-D3s" id="iFy-u5-Pxc"/>
                                     <outlet property="thumbnail" destination="skF-jO-Duu" id="hhg-Sw-cZN"/>
-                                    <segue destination="Qus-kH-7Ni" kind="show" id="j87-Qa-4yP"/>
+                                    <segue destination="Qus-kH-7Ni" kind="showDetail" id="S8h-bs-hOW"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -177,7 +177,20 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YzS-R5-P6g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2126" y="620"/>
+            <point key="canvasLocation" x="964" y="1554"/>
+        </scene>
+        <!--Root Split View Controller-->
+        <scene sceneID="QGV-NM-dxC">
+            <objects>
+                <splitViewController id="Iw2-VX-YQn" customClass="RootSplitViewController" customModule="Shrinkwrap" customModuleProvider="target" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="Eld-ue-aQ8" kind="relationship" relationship="masterViewController" id="zkY-bA-iA0"/>
+                        <segue destination="Qus-kH-7Ni" kind="relationship" relationship="detailViewController" id="3US-Nl-aqh"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iNn-tK-PUM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-416" y="1097"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kaL-os-XbT">
@@ -199,4 +212,7 @@
             <point key="canvasLocation" x="570" y="620"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="S8h-bs-hOW"/>
+    </inferredMetricsTieBreakers>
 </document>
