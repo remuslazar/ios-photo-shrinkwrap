@@ -11,20 +11,6 @@ import Photos
 
 class ShowPhotoViewController: UIViewController, PHPhotoLibraryChangeObserver {
 
-    struct Constants {
-        static let AdjustmentFormatIdentifier = "info.lazar.photo-resize"
-        static let AdjustmentFormatVersion = "1.0"
-    }
-    
-    struct ResizePresets {
-        static let MegaPixelsForTag = [
-            1: 0.134, // HVGA
-            2: 0.48, // SVGA
-            3: 2.0, // FHD
-        ]
-        static let jpegCompressionQuality: CGFloat = 0.85
-    }
-    
     // our model
     var photo: PHAsset!
     
@@ -72,39 +58,15 @@ class ShowPhotoViewController: UIViewController, PHPhotoLibraryChangeObserver {
         }
     }
     
-    private func resizeImage(megaPixel: Double) {
+    private func resizeImageForPreset(preset: Int) {
         
         let options = PHContentEditingInputRequestOptions()
-        options.canHandleAdjustmentData = { (adjustmentData) in
-            return adjustmentData.formatIdentifier == Constants.AdjustmentFormatIdentifier
-        }
+        options.canHandleAdjustmentData = PhotoResizeEngine.canHandleAdjustmentData
         
         spinner.startAnimating()
         photo.requestContentEditingInputWithOptions(options) { (contentEditingInput, info) in
-            let url = contentEditingInput!.fullSizeImageURL!
-            let orientation = contentEditingInput!.fullSizeImageOrientation
-            let inputImage = CIImage(contentsOfURL: url)!
-                
-            // scale the image to the desired resolution
-            let scale = sqrt(CGFloat(megaPixel * 1_000_000) / (inputImage.extent.height * inputImage.extent.width))
             
-            let filter = CIFilter(
-                name: "CILanczosScaleTransform",
-                withInputParameters: [
-                    kCIInputImageKey: inputImage.imageByApplyingOrientation(orientation),
-                    kCIInputScaleKey: scale,
-                    kCIInputAspectRatioKey: 1.0
-                ])
-            let outputImage = filter!.outputImage
-            let adjustmentData = PHAdjustmentData(
-                formatIdentifier: Constants.AdjustmentFormatIdentifier,
-                formatVersion: Constants.AdjustmentFormatVersion,
-                data: "\(megaPixel)".dataUsingEncoding(NSUTF8StringEncoding)!)
-            let contentEditingOutput = PHContentEditingOutput(contentEditingInput: contentEditingInput!)
-            
-            let jpegData = outputImage!.jpegRepresentationWithCompressionQuality(ResizePresets.jpegCompressionQuality)
-            jpegData.writeToURL(contentEditingOutput.renderedContentURL, atomically: true)
-            contentEditingOutput.adjustmentData = adjustmentData
+            let contentEditingOutput = PhotoResizeEngine.resizeImageForPreset(preset, contentEditingInput: contentEditingInput!)
             
             // perform the changes
             PHPhotoLibrary.sharedPhotoLibrary().performChanges({ () -> Void in
@@ -125,7 +87,7 @@ class ShowPhotoViewController: UIViewController, PHPhotoLibraryChangeObserver {
     @IBAction func resizePhoto(sender: UIBarButtonItem) {
         // Note: we're using the sender.tag value to distinguish between the 3 options
         // 1: small, 2: medium, 3: large
-        resizeImage(ResizePresets.MegaPixelsForTag[sender.tag]!)
+        resizeImageForPreset(sender.tag)
     }
 
     @IBAction func revertChanges(sender: AnyObject) {
@@ -194,15 +156,4 @@ class ShowPhotoViewController: UIViewController, PHPhotoLibraryChangeObserver {
         }
     }
     
-}
-
-extension CIImage {
-    func jpegRepresentationWithCompressionQuality(quality: CGFloat) -> NSData {
-        let eaglContext = EAGLContext(API: .OpenGLES2)
-        let ciContext = CIContext(EAGLContext: eaglContext)
-        //let ciContext = CIContext(options: [kCIContextUseSoftwareRenderer: false])
-        let outputImageRef = ciContext.createCGImage(self, fromRect: self.extent)
-        let uiImage = UIImage(CGImage: outputImageRef, scale: 1.0, orientation: .Up)
-        return UIImageJPEGRepresentation(uiImage, quality)!
-    }
 }
