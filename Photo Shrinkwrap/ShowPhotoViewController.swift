@@ -80,33 +80,28 @@ class ShowPhotoViewController: UIViewController, PHPhotoLibraryChangeObserver {
         }
     }
 
+    private func getCurrentPresetWithBlock(block: (preset: Int?) -> Void) {
+        let options = PHContentEditingInputRequestOptions()
+        options.canHandleAdjustmentData = PhotoResizeEngine.canHandleAdjustmentData
+        photo.requestContentEditingInputWithOptions(options) { (contentEditingInput, info) in
+            let preset = PhotoResizeEngine.presetForAdjustmentData(contentEditingInput!.adjustmentData)
+            dispatch_async(dispatch_get_main_queue()) {
+                block(preset: preset)
+            }
+        }
+    }
+    
     // MARK: - Outlets
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var loadingProgressView: UIProgressView!
-    @IBAction func resizePhoto(sender: UIBarButtonItem) {
-        // Note: we're using the sender.tag value to distinguish between the 3 options
-        // 1: small, 2: medium, 3: large
-        resizeImageForPreset(sender.tag)
-    }
+    @IBOutlet weak var sizeSelector: UISegmentedControl!
 
-    @IBAction func revertChanges(sender: AnyObject) {
-        PHPhotoLibrary.sharedPhotoLibrary().performChanges({ () -> Void in
-            let request = PHAssetChangeRequest(forAsset: self.photo)
-            request.revertAssetContentToOriginal()
-            }) { (success, error) -> Void in
-                
-        }
+    @IBAction func handleResize(sender: UISegmentedControl) {
+        resizeImageForPreset(sender.selectedSegmentIndex)
     }
     
     @IBOutlet weak var spinner: UIActivityIndicatorView!
-    @IBOutlet weak var deleteButton: UIBarButtonItem!
-    @IBAction func handleDelete(sender: AnyObject) {
-        PHPhotoLibrary.sharedPhotoLibrary().performChanges({ () -> Void in
-            PHAssetChangeRequest.deleteAssets([self.photo])
-            }, completionHandler: nil)
-    }
-
     // MARK: - ViewController Life Cycle
     
     deinit {
@@ -115,7 +110,11 @@ class ShowPhotoViewController: UIViewController, PHPhotoLibraryChangeObserver {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        deleteButton.enabled = photo != nil && photo.canPerformEditOperation(.Delete)
+        if photo != nil {
+            getCurrentPresetWithBlock() { (preset) in
+                self.sizeSelector?.selectedSegmentIndex = preset == nil ? -1 : preset!
+            }
+        }
         PHPhotoLibrary.sharedPhotoLibrary().registerChangeObserver(self)
     }
     

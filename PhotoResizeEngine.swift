@@ -19,9 +19,10 @@ class PhotoResizeEngine {
     
     struct ResizePresets {
         static let MegaPixelsForPreset = [
-            1: 0.134, // HVGA
-            2: 0.48, // SVGA
-            3: 2.0, // FHD
+            0.134, // HVGA
+            0.48, // SVGA
+            2.0, // FHD
+            0, // Original Size
         ]
         static let jpegCompressionQuality: CGFloat = 0.85
     }
@@ -39,26 +40,26 @@ class PhotoResizeEngine {
     }
     
     class func resizeImageForPreset(preset: Int, contentEditingInput: PHContentEditingInput) -> PHContentEditingOutput {
-      
+
+        let contentEditingOutput = PHContentEditingOutput(contentEditingInput: contentEditingInput)
+        
         let outputImage = resizeImageForPreset(preset, image: CIImage(contentsOfURL: contentEditingInput.fullSizeImageURL!)!,
             orientation: contentEditingInput.fullSizeImageOrientation)
-        
+        let jpegData = outputImage.jpegRepresentationWithCompressionQuality(ResizePresets.jpegCompressionQuality)
+        jpegData.writeToURL(contentEditingOutput.renderedContentURL, atomically: true)
+    
         let adjustmentData = PHAdjustmentData(
             formatIdentifier: Constants.AdjustmentFormatIdentifier,
             formatVersion: Constants.AdjustmentFormatVersion,
             data: NSKeyedArchiver.archivedDataWithRootObject(preset))
-        
-        let contentEditingOutput = PHContentEditingOutput(contentEditingInput: contentEditingInput)
-        
-        let jpegData = outputImage.jpegRepresentationWithCompressionQuality(ResizePresets.jpegCompressionQuality)
-        jpegData.writeToURL(contentEditingOutput.renderedContentURL, atomically: true)
         contentEditingOutput.adjustmentData = adjustmentData
         
         return contentEditingOutput
     }
     
     class func resizeImageForPreset(preset: Int, image: CIImage, orientation: Int32) -> CIImage {
-        let megaPixel = ResizePresets.MegaPixelsForPreset[preset]!
+        let megaPixel = ResizePresets.MegaPixelsForPreset[preset]
+        if megaPixel == 0 { return image } // no resample needed
         
         // scale the image to the desired resolution
         let scale = sqrt(CGFloat(megaPixel * 1_000_000) / (image.extent.height * image.extent.width))
@@ -71,7 +72,6 @@ class PhotoResizeEngine {
                 kCIInputAspectRatioKey: 1.0
             ])
         return filter!.outputImage!
-        
     }
     
 }

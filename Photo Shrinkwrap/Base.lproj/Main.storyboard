@@ -102,7 +102,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cZJ-jI-v8x">
+                            <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cZJ-jI-v8x">
                                 <rect key="frame" x="0.0" y="557" width="600" height="2"/>
                                 <animations/>
                             </progressView>
@@ -114,70 +114,40 @@
                                 <rect key="frame" x="282" y="292" width="37" height="37"/>
                                 <animations/>
                             </activityIndicatorView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.90000000000000002" contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="eHO-RZ-J6B">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                            <segmentedControl opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="TRV-sm-zkW">
+                                <rect key="frame" x="20" y="552" width="560" height="29"/>
                                 <animations/>
-                                <items>
-                                    <barButtonItem tag="1" title="Small" id="bK9-ha-zmh">
-                                        <connections>
-                                            <action selector="resizePhoto:" destination="Qus-kH-7Ni" id="5nc-iv-hw9"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="I57-aM-C1q"/>
-                                    <barButtonItem tag="2" title="Medium" id="7pK-UM-cdJ">
-                                        <connections>
-                                            <action selector="resizePhoto:" destination="Qus-kH-7Ni" id="1PZ-KC-1On"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="afq-JA-hqc"/>
-                                    <barButtonItem tag="3" title="Large" id="htc-Cc-bxl">
-                                        <connections>
-                                            <action selector="resizePhoto:" destination="Qus-kH-7Ni" id="z3x-Il-psd"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="zYs-R9-Sfu"/>
-                                    <barButtonItem title="Original" style="plain" id="mkl-Fh-REc">
-                                        <connections>
-                                            <action selector="revertChanges:" destination="Qus-kH-7Ni" id="jcr-Gz-3Ac"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Nti-bT-8DN"/>
-                                    <barButtonItem systemItem="trash" id="L2x-c4-EnJ">
-                                        <connections>
-                                            <action selector="handleDelete:" destination="Qus-kH-7Ni" id="XV9-3Y-d8t"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <segments>
+                                    <segment title="Small"/>
+                                    <segment title="Medium"/>
+                                    <segment title="Large"/>
+                                    <segment title="Original"/>
+                                </segments>
+                                <connections>
+                                    <action selector="handleResize:" destination="Qus-kH-7Ni" eventType="valueChanged" id="ZCi-dS-ldl"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cZJ-jI-v8x" firstAttribute="trailing" secondItem="eHO-RZ-J6B" secondAttribute="trailing" id="0W5-cX-HSm"/>
-                            <constraint firstItem="eHO-RZ-J6B" firstAttribute="leading" secondItem="ir3-q0-Wep" secondAttribute="leadingMargin" constant="-20" id="4Wf-WI-Hqh"/>
-                            <constraint firstItem="eHO-RZ-J6B" firstAttribute="top" secondItem="8JW-nL-r2y" secondAttribute="bottom" id="4ir-RS-7gK"/>
                             <constraint firstItem="8JW-nL-r2y" firstAttribute="leading" secondItem="ir3-q0-Wep" secondAttribute="leadingMargin" constant="-20" id="K2G-XL-jfm"/>
                             <constraint firstItem="071-aB-djX" firstAttribute="centerY" secondItem="8JW-nL-r2y" secondAttribute="centerY" id="Pbe-aX-7uz"/>
-                            <constraint firstItem="eHO-RZ-J6B" firstAttribute="top" secondItem="cZJ-jI-v8x" secondAttribute="bottom" constant="-3" id="SBL-Gd-OM0"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="eHO-RZ-J6B" secondAttribute="trailing" constant="-20" id="TOf-jh-XWg"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="TRV-sm-zkW" secondAttribute="leading" id="QFt-Ok-Op4"/>
                             <constraint firstItem="8JW-nL-r2y" firstAttribute="top" secondItem="78e-i8-7Hm" secondAttribute="bottom" id="VVa-4k-6SA"/>
                             <constraint firstItem="071-aB-djX" firstAttribute="centerX" secondItem="8JW-nL-r2y" secondAttribute="centerX" id="ca6-mP-xar"/>
                             <constraint firstItem="tvd-HH-tse" firstAttribute="top" secondItem="8JW-nL-r2y" secondAttribute="bottom" id="gmb-Mu-2Ac"/>
-                            <constraint firstItem="cZJ-jI-v8x" firstAttribute="leading" secondItem="eHO-RZ-J6B" secondAttribute="leading" id="jPf-jP-nei"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TRV-sm-zkW" secondAttribute="trailing" id="jds-sE-0Fq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8JW-nL-r2y" secondAttribute="trailing" constant="-20" id="reM-Fq-ciO"/>
-                            <constraint firstItem="tvd-HH-tse" firstAttribute="top" secondItem="eHO-RZ-J6B" secondAttribute="bottom" id="yPw-Q1-f69"/>
+                            <constraint firstItem="tvd-HH-tse" firstAttribute="top" secondItem="TRV-sm-zkW" secondAttribute="bottom" constant="20" id="ze0-0B-dEN"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="4ir-RS-7gK"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="1F6-51-cwd"/>
                     <connections>
-                        <outlet property="deleteButton" destination="L2x-c4-EnJ" id="rPX-Bv-jhv"/>
                         <outlet property="imageView" destination="8JW-nL-r2y" id="cEB-EM-soq"/>
                         <outlet property="loadingProgressView" destination="cZJ-jI-v8x" id="rx4-ei-j87"/>
+                        <outlet property="sizeSelector" destination="TRV-sm-zkW" id="XIN-mg-6R3"/>
                         <outlet property="spinner" destination="071-aB-djX" id="sFN-Db-53b"/>
                     </connections>
                 </viewController>
