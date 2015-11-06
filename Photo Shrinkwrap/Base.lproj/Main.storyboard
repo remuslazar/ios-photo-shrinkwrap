@@ -75,7 +75,7 @@
                                     <outlet property="photoLabel" destination="gx9-wG-5z9" id="pjG-Za-cUz"/>
                                     <outlet property="resolutionLabel" destination="hux-iR-D3s" id="iFy-u5-Pxc"/>
                                     <outlet property="thumbnail" destination="skF-jO-Duu" id="hhg-Sw-cZN"/>
-                                    <segue destination="Qus-kH-7Ni" kind="show" id="1H0-n9-Wse"/>
+                                    <segue destination="Qus-kH-7Ni" kind="show" id="j87-Qa-4yP"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -167,6 +167,7 @@
                             <constraint firstItem="tvd-HH-tse" firstAttribute="top" secondItem="eHO-RZ-J6B" secondAttribute="bottom" id="yPw-Q1-f69"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="1F6-51-cwd"/>
                     <connections>
                         <outlet property="deleteButton" destination="L2x-c4-EnJ" id="rPX-Bv-jhv"/>
                         <outlet property="imageView" destination="8JW-nL-r2y" id="cEB-EM-soq"/>
@@ -176,7 +177,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YzS-R5-P6g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2091" y="620"/>
+            <point key="canvasLocation" x="2126" y="620"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kaL-os-XbT">
