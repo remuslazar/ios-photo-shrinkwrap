@@ -146,10 +146,6 @@ class ShowPhotoViewController: UIViewController, PHPhotoLibraryChangeObserver {
             }) { (success, error) -> Void in
                 if (!success) {
                     print("Deletion request for asset \(self.photo) failed")
-                } else {
-                    dispatch_async(dispatch_get_main_queue()) {
-                        self.navigationController?.popViewControllerAnimated(true)
-                    }
                 }
         }
     }
@@ -197,7 +193,7 @@ class ShowPhotoViewController: UIViewController, PHPhotoLibraryChangeObserver {
                     }
                 } else {
                     self.photo = nil
-                    self.fetchImage()
+                    self.navigationController?.popViewControllerAnimated(true)
                 }
             }
         }
