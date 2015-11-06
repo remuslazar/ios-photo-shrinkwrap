@@ -9,11 +9,11 @@
 import Foundation
 
 extension NSURL {
-    var fileSize: Int? {
+    var fileSize: Int64? {
         get {
             let info = try! self.resourceValuesForKeys([NSURLFileSizeKey])
             if let fileSize = info[NSURLFileSizeKey] {
-                return fileSize.integerValue
+                return fileSize.longLongValue
             }
             return nil
         }

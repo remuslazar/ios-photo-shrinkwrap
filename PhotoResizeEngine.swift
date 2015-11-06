@@ -30,36 +30,48 @@ class PhotoResizeEngine {
         return adjustmentData.formatIdentifier == Constants.AdjustmentFormatIdentifier
     }
     
+    class func presetForAdjustmentData(adjustmentData: PHAdjustmentData?) -> Int? {
+        if let adjustmentData = adjustmentData,
+            let preset = NSKeyedUnarchiver.unarchiveObjectWithData(adjustmentData.data) as? Int {
+                return preset
+        }
+        return nil
+    }
+    
     class func resizeImageForPreset(preset: Int, contentEditingInput: PHContentEditingInput) -> PHContentEditingOutput {
+      
+        let outputImage = resizeImageForPreset(preset, image: CIImage(contentsOfURL: contentEditingInput.fullSizeImageURL!)!,
+            orientation: contentEditingInput.fullSizeImageOrientation)
         
-        let megaPixel = ResizePresets.MegaPixelsForPreset[preset]!
-        
-        let url = contentEditingInput.fullSizeImageURL!
-        let orientation = contentEditingInput.fullSizeImageOrientation
-        let inputImage = CIImage(contentsOfURL: url)!
-        
-        // scale the image to the desired resolution
-        let scale = sqrt(CGFloat(megaPixel * 1_000_000) / (inputImage.extent.height * inputImage.extent.width))
-        
-        let filter = CIFilter(
-            name: "CILanczosScaleTransform",
-            withInputParameters: [
-                kCIInputImageKey: inputImage.imageByApplyingOrientation(orientation),
-                kCIInputScaleKey: scale,
-                kCIInputAspectRatioKey: 1.0
-            ])
-        let outputImage = filter!.outputImage
         let adjustmentData = PHAdjustmentData(
             formatIdentifier: Constants.AdjustmentFormatIdentifier,
             formatVersion: Constants.AdjustmentFormatVersion,
-            data: "\(megaPixel)".dataUsingEncoding(NSUTF8StringEncoding)!)
+            data: NSKeyedArchiver.archivedDataWithRootObject(preset))
+        
         let contentEditingOutput = PHContentEditingOutput(contentEditingInput: contentEditingInput)
         
-        let jpegData = outputImage!.jpegRepresentationWithCompressionQuality(ResizePresets.jpegCompressionQuality)
+        let jpegData = outputImage.jpegRepresentationWithCompressionQuality(ResizePresets.jpegCompressionQuality)
         jpegData.writeToURL(contentEditingOutput.renderedContentURL, atomically: true)
         contentEditingOutput.adjustmentData = adjustmentData
         
         return contentEditingOutput
+    }
+    
+    class func resizeImageForPreset(preset: Int, image: CIImage, orientation: Int32) -> CIImage {
+        let megaPixel = ResizePresets.MegaPixelsForPreset[preset]!
+        
+        // scale the image to the desired resolution
+        let scale = sqrt(CGFloat(megaPixel * 1_000_000) / (image.extent.height * image.extent.width))
+        
+        let filter = CIFilter(
+            name: "CILanczosScaleTransform",
+            withInputParameters: [
+                kCIInputImageKey: image.imageByApplyingOrientation(orientation),
+                kCIInputScaleKey: scale,
+                kCIInputAspectRatioKey: 1.0
+            ])
+        return filter!.outputImage!
+        
     }
     
 }
