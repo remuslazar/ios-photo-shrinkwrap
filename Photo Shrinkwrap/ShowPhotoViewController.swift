@@ -45,13 +45,10 @@ class ShowPhotoViewController: UIViewController, PHPhotoLibraryChangeObserver {
                 self.photo.getURLWithCompletionHandler { (url) in
                     if let url = url,
                         let fileSize = url.fileSize {
-                            let fileSizeString = NSByteCountFormatter.stringFromByteCount(Int64(fileSize),
-                                countStyle: .File)
+                            let fileSizeString = NSByteCountFormatter.stringFromByteCount(Int64(fileSize), countStyle: .File)
                             self.title! += " \(fileSizeString)"
                     }
                 }
-
-                
             }
             self.imageView.image = image
             self.imageView.clipsToBounds = true
