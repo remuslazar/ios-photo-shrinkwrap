@@ -16,6 +16,7 @@ class ShowPhotoViewController: UIViewController, PHPhotoLibraryChangeObserver {
     
     private let pim = PHImageManager()
     private var requestIdentifier: PHImageRequestID = 0
+    private var oldSelection: Int!
     
     private func fetchImage() {
 
@@ -68,6 +69,7 @@ class ShowPhotoViewController: UIViewController, PHPhotoLibraryChangeObserver {
             
             let contentEditingOutput = PhotoResizeEngine.resizeImageForPreset(preset, contentEditingInput: contentEditingInput!)
             
+            
             // perform the changes
             PHPhotoLibrary.sharedPhotoLibrary().performChanges({ () -> Void in
                 let request = PHAssetChangeRequest(forAsset: self.photo)
@@ -75,6 +77,12 @@ class ShowPhotoViewController: UIViewController, PHPhotoLibraryChangeObserver {
                 }, completionHandler: { (success, _) in
                     dispatch_async(dispatch_get_main_queue()) {
                         self.spinner.stopAnimating()
+                    }
+                    // revert the segmented control if the conversion was not successful
+                    if success {
+                        self.oldSelection = self.sizeSelector.selectedSegmentIndex
+                    } else {
+                        self.sizeSelector.selectedSegmentIndex = self.oldSelection
                     }
             })
         }
@@ -96,7 +104,7 @@ class ShowPhotoViewController: UIViewController, PHPhotoLibraryChangeObserver {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var loadingProgressView: UIProgressView!
     @IBOutlet weak var sizeSelector: UISegmentedControl!
-
+    
     @IBAction func handleResize(sender: UISegmentedControl) {
         resizeImageForPreset(sender.selectedSegmentIndex)
     }
@@ -113,6 +121,7 @@ class ShowPhotoViewController: UIViewController, PHPhotoLibraryChangeObserver {
         if photo != nil {
             getCurrentPresetWithBlock() { (preset) in
                 self.sizeSelector?.selectedSegmentIndex = preset == nil ? -1 : preset!
+                self.oldSelection = self.sizeSelector.selectedSegmentIndex
             }
         }
         PHPhotoLibrary.sharedPhotoLibrary().registerChangeObserver(self)

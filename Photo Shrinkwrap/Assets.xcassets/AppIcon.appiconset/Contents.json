@@ -23,13 +23,13 @@
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "App Icon iPhone iOS 7-9@2x.png",
+      "filename" : "iPhone Icon@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "App Icon iPhone iOS 7-9@3x.png",
+      "filename" : "iPhone Icon@3x.png",
       "scale" : "3x"
     },
     {
@@ -53,15 +53,13 @@
       "scale" : "2x"
     },
     {
-      "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "App Icon iPad iOS 7-9.png",
+      "size" : "76x76",
       "scale" : "1x"
     },
     {
-      "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "App Icon iPad iOS 7-9@2x.png",
+      "size" : "76x76",
       "scale" : "2x"
     }
   ],
