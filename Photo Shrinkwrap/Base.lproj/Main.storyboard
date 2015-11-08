@@ -97,8 +97,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cZJ-jI-v8x">
-                                <rect key="frame" x="0.0" y="557" width="600" height="2"/>
+                            <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cZJ-jI-v8x">
+                                <rect key="frame" x="0.0" y="542" width="600" height="2"/>
                                 <animations/>
                             </progressView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8JW-nL-r2y">
@@ -127,14 +127,17 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="TRV-sm-zkW" firstAttribute="top" secondItem="cZJ-jI-v8x" secondAttribute="bottom" constant="8" symbolic="YES" id="HwJ-dm-aDn"/>
                             <constraint firstItem="8JW-nL-r2y" firstAttribute="leading" secondItem="ir3-q0-Wep" secondAttribute="leadingMargin" constant="-20" id="K2G-XL-jfm"/>
                             <constraint firstItem="071-aB-djX" firstAttribute="centerY" secondItem="8JW-nL-r2y" secondAttribute="centerY" id="Pbe-aX-7uz"/>
                             <constraint firstAttribute="leadingMargin" secondItem="TRV-sm-zkW" secondAttribute="leading" id="QFt-Ok-Op4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cZJ-jI-v8x" secondAttribute="trailing" constant="-20" id="RWG-tZ-KJm"/>
                             <constraint firstItem="8JW-nL-r2y" firstAttribute="top" secondItem="78e-i8-7Hm" secondAttribute="bottom" id="VVa-4k-6SA"/>
                             <constraint firstItem="071-aB-djX" firstAttribute="centerX" secondItem="8JW-nL-r2y" secondAttribute="centerX" id="ca6-mP-xar"/>
                             <constraint firstItem="tvd-HH-tse" firstAttribute="top" secondItem="8JW-nL-r2y" secondAttribute="bottom" id="gmb-Mu-2Ac"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TRV-sm-zkW" secondAttribute="trailing" id="jds-sE-0Fq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8JW-nL-r2y" secondAttribute="trailing" constant="-20" id="reM-Fq-ciO"/>
+                            <constraint firstItem="cZJ-jI-v8x" firstAttribute="leading" secondItem="ir3-q0-Wep" secondAttribute="leadingMargin" constant="-20" id="zPB-Am-W5p"/>
                             <constraint firstItem="tvd-HH-tse" firstAttribute="top" secondItem="TRV-sm-zkW" secondAttribute="bottom" constant="20" id="ze0-0B-dEN"/>
                         </constraints>
                     </view>

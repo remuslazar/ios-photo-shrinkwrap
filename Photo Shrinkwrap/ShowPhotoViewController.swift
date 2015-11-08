@@ -27,10 +27,11 @@ class ShowPhotoViewController: UIViewController, PHPhotoLibraryChangeObserver {
         }
         
         let options = PHImageRequestOptions()
-        loadingProgressView.setProgress(0, animated: false)
-        loadingProgressView.hidden = false
         options.progressHandler = { (progress, error, stop, info) in
             dispatch_async(dispatch_get_main_queue()) {
+                if progress > 0 {
+                    self.loadingProgressView.hidden = false
+                }
                 self.loadingProgressView.progress = Float(progress)
             }
         }
