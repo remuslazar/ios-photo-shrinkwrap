@@ -96,14 +96,22 @@ class PhotosTableViewController: UITableViewController, PHPhotoLibraryChangeObse
             cell.photoLabel.text = NSDateFormatter.localizedStringFromDate(asset.creationDate!, dateStyle: .MediumStyle,
                 timeStyle: .MediumStyle)
             
-            if let resource = PHAssetResource.assetResourcesForAsset(asset).first {
-                cell.filenameLabel.text = resource.originalFilename
+            if #available(iOS 9.0, *) {
+                if let resource = PHAssetResource.assetResourcesForAsset(asset).first {
+                    cell.filenameLabel.text = resource.originalFilename
+                }
+            } else {
+                cell.filenameLabel.text = nil
             }
             cell.resolutionLabel.text = "\(asset.pixelWidth) x \(asset.pixelHeight)"
             
             asset.getURLWithCompletionHandler { (url) in
                 if cell.representedAssetIdentifier == asset.localIdentifier { // check if the cell is still the same as before
                     if let url = url {
+                        if cell.filenameLabel.text == nil {
+                            // iOS8, get the filename from the URL
+                            cell.filenameLabel.text = url.lastPathComponent
+                        }
                         if let fileSize = url.fileSize {
                             let fileSizeString = NSByteCountFormatter.stringFromByteCount(Int64(fileSize),
                                 countStyle: .File)
