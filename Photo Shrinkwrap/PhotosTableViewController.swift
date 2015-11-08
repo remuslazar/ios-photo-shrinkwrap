@@ -13,8 +13,14 @@ class PhotosTableViewController: UITableViewController, PHPhotoLibraryChangeObse
 
     struct Storyboard {
         static let CellIdentifier = "Photo Cell"
-        static let PhotoSize = CGSize(width: 80, height: 80)
+        static let ThumbnailSize = CGSize(width: 80, height: 80)
     }
+    
+    private let thumbnailSize: CGSize = {
+        let scale = UIScreen.mainScreen().scale
+        return CGSize(width: Storyboard.ThumbnailSize.width * scale,
+            height: Storyboard.ThumbnailSize.height)
+    }()
     
     var allPhotos: PHFetchResult = {
         let options = PHFetchOptions()
@@ -126,7 +132,7 @@ class PhotosTableViewController: UITableViewController, PHPhotoLibraryChangeObse
             // we dont want to go out to the network to fetch the thumbnails
             options.networkAccessAllowed = false
 
-            pim.requestImageForAsset(asset, targetSize: Storyboard.PhotoSize, contentMode: .AspectFill, options: options) {
+            pim.requestImageForAsset(asset, targetSize: thumbnailSize, contentMode: .AspectFill, options: options) {
                 (image, info) -> Void in
                 if cell.representedAssetIdentifier == asset.localIdentifier { // check if the cell is still the same as before
                     cell.thumbnail.image = image
