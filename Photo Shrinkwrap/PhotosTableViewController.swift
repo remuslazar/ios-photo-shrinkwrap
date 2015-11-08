@@ -178,7 +178,13 @@ class PhotosTableViewController: UITableViewController, PHPhotoLibraryChangeObse
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let dvc = segue.destinationViewController as? ShowPhotoViewController,
+        var destinationVC = segue.destinationViewController
+        
+        if let navigationController = destinationVC as? UINavigationController {
+            destinationVC = navigationController.topViewController!
+        }
+        
+        if let dvc = destinationVC as? ShowPhotoViewController,
             cell = sender as? PhotoTableViewCell,
             indexPath = tableView.indexPathForCell(cell),
             asset = allPhotos[indexPath.row] as? PHAsset {

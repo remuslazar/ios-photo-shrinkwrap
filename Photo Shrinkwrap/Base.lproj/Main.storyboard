@@ -70,7 +70,7 @@
                                     <outlet property="photoLabel" destination="gx9-wG-5z9" id="pjG-Za-cUz"/>
                                     <outlet property="resolutionLabel" destination="hux-iR-D3s" id="iFy-u5-Pxc"/>
                                     <outlet property="thumbnail" destination="skF-jO-Duu" id="hhg-Sw-cZN"/>
-                                    <segue destination="Qus-kH-7Ni" kind="showDetail" id="S8h-bs-hOW"/>
+                                    <segue destination="vlo-xK-bAa" kind="showDetail" id="S8h-bs-hOW"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -151,7 +151,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YzS-R5-P6g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="964" y="1554"/>
+            <point key="canvasLocation" x="1776" y="1554"/>
         </scene>
         <!--Root Split View Controller-->
         <scene sceneID="QGV-NM-dxC">
@@ -159,7 +159,7 @@
                 <splitViewController id="Iw2-VX-YQn" customClass="RootSplitViewController" customModule="Shrinkwrap" customModuleProvider="target" sceneMemberID="viewController">
                     <connections>
                         <segue destination="Eld-ue-aQ8" kind="relationship" relationship="masterViewController" id="zkY-bA-iA0"/>
-                        <segue destination="Qus-kH-7Ni" kind="relationship" relationship="detailViewController" id="3US-Nl-aqh"/>
+                        <segue destination="vlo-xK-bAa" kind="relationship" relationship="detailViewController" id="3US-Nl-aqh"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iNn-tK-PUM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -184,6 +184,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n8V-er-v1D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="570" y="620"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ehO-6x-lU5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vlo-xK-bAa" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jkB-pU-qc7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Qus-kH-7Ni" kind="relationship" relationship="rootViewController" id="s7L-m1-goA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Ha-KF-4PP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="964" y="1554"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
